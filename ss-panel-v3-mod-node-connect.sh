@@ -156,6 +156,12 @@ install_ubuntu_ssr(){
 function install_BBR(){
      wget --no-check-certificate -O tcp.sh https://github.com/spiderman5408/Linux-NetSpeed/raw/master/tcp.sh && chmod +x tcp.sh && ./tcp.sh
 }
+function install_bt(){
+     yum install -y wget && wget -O install.sh http://download.bt.cn/install/install.sh && sh install.sh
+}
+function install_sspanel(){
+     wget -N --no-check-certificate https://raw.githubusercontent.com/spiderman5408/sspanel-v3-mod-uim-bt/master/sspanel-v3-mod-uim-bt.sh &&chmod +x sspanel-v3-mod-uim-bt.sh &&bash sspanel-v3-mod-uim-bt.sh
+}
 install_node(){
 	clear
 	echo
@@ -324,34 +330,48 @@ echo "# Github: https://github.com/spiderman5408/ss-panel-v3-mod-node-connect  "
 echo "# Author: 7colorblog                                                   "
 echo "# blog: https://www.7colorblog.com                                     "
 echo "# 请输入1或2选择对接方式                                               "
-echo "# 1  webapi对接选这个!                                                 "
-echo "# 2  db数据库对接选这个!                                               "
-echo "# 3  一键  BBR加速  搭建!                                                 "
+echo "# 1  一键宝塔5.9搭建                                                "
+echo "# 2  一键sspanel前端搭建                                               "
+echo "# 3  一键后端webapi方式对接                                                 "
+echo "# 4  一键db数据库方式对接                                                 "
+echo "# 5  一键BBR加速+暴力魔改内核!                                                 "
 echo "########################################################################"
 echo
 num=$1
 if [ "${num}" == "1" ]; then
-    install_node 1
+    install_bt
 elif [[ $num == "2" ]]
 then
-install_node_db 2
+install_sspanel
 elif [[ $num == "3" ]]
+then
+install_node 1
+elif [[ $num == "4" ]]
+then
+install_node_db
+elif [[ $num == "5" ]]
 then
 install_BBR
 else
-    stty erase '^H' && read -p " 请输入数字 [1-3]:" num
+    stty erase '^H' && read -p " 请输入数字 [1-5]:" num
 		case "$num" in
 		1)
-		install_node
+		install_bt
 		;;
 		2)
-		install_node_db
+		install_sspanel
 		;;
 		3)
+		install_node 1
+		;;
+		4)
+		install_node_db
+		;;
+		5)
 		install_BBR
 		;;
 		*)
-		echo "请输入正确数字 [1-3]"
+		echo "请输入正确数字 [1-5]"
 		;;
 	esac
 fi
