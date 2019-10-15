@@ -113,15 +113,15 @@ install_centos_ssr(){
 		mkdir python && cd python
 		git clone https://github.com/spiderman5408/urllib3.git && cd urllib3
 		python setup.py install && cd ..
-		git clone https://github.com/nakagami/CyMySQL.git && cd CyMySQL
+		git clone https://github.com/spiderman5408/CyMySQL.git && cd CyMySQL
 		python setup.py install && cd ..
-		git clone https://github.com/requests/requests.git && cd requests
+		git clone https://github.com/spiderman5408/requests.git && cd requests
 		python setup.py install && cd ..
-		git clone https://github.com/pyca/pyopenssl.git && cd pyopenssl
+		git clone https://github.com/spiderman5408/pyopenssl.git && cd pyopenssl
 		python setup.py install && cd ..
-		git clone https://github.com/cedadev/ndg_httpsclient.git && cd ndg_httpsclient
+		git clone https://github.com/spiderman5408/ndg_httpsclient.git && cd ndg_httpsclient
 		python setup.py install && cd ..
-		git clone https://github.com/etingof/pyasn1.git && cd pyasn1
+		git clone https://github.com/spiderman5408/pyasn1.git && cd pyasn1
 		python setup.py install && cd ..
 		rm -rf python
 	fi	
