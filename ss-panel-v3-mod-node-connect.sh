@@ -154,10 +154,7 @@ install_ubuntu_ssr(){
 	cp config.json user-config.json
 }
 function install_BBR(){
-     wget --no-check-certificate https://github.com/spiderman5408/across/raw/master/bbr.sh&&chmod +x bbr.sh&&./bbr.sh
-}
-function install_RS(){
-     wget -N --no-check-certificate https://github.com/spiderman5408/serverspeeder/raw/master/serverspeeder.sh && bash serverspeeder.sh
+     wget --no-check-certificate -O tcp.sh https://github.com/spiderman5408/Linux-NetSpeed/raw/master/tcp.sh && chmod +x tcp.sh && ./tcp.sh
 }
 install_node(){
 	clear
@@ -330,7 +327,6 @@ echo "# 请输入1或2选择对接方式                                        
 echo "# 1  webapi对接选这个!                                                 "
 echo "# 2  db数据库对接选这个!                                               "
 echo "# 3  一键  BBR加速  搭建!                                                 "
-echo "# 4  一键锐速破解版搭建!                                                 "
 echo "########################################################################"
 echo
 num=$1
@@ -338,15 +334,12 @@ if [ "${num}" == "1" ]; then
     install_node 1
 elif [[ $num == "2" ]]
 then
-NEW_NODE
+install_node_db 2
 elif [[ $num == "3" ]]
 then
 install_BBR
-elif [[ $num == "4" ]]
-then
-install_RS
 else
-    stty erase '^H' && read -p " 请输入数字 [1-4]:" num
+    stty erase '^H' && read -p " 请输入数字 [1-3]:" num
 		case "$num" in
 		1)
 		install_node
@@ -357,11 +350,8 @@ else
 		3)
 		install_BBR
 		;;
-		4)
-		install_RS
-		;;
 		*)
-		echo "请输入正确数字 [1-4]"
+		echo "请输入正确数字 [1-3]"
 		;;
 	esac
 fi
